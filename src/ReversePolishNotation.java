@@ -4,10 +4,6 @@ import java.util.Stack;
 public class ReversePolishNotation {
 
   public static void main(String[] args) {
-    // Transform the algebraic expression with brackets into RPN form (Reverse Polish Notation).
-    // Two-argument operators: +, -, *, /, ^ (priority from the lowest to the highest), brackets
-    // ( ). Operands: only letters: a,b,...,z. Assume that there is only one RPN form (no
-    // expressions like a*b*c).
     Scanner scan = new Scanner(System.in);
     int t = scan.nextInt();
     scan.nextLine();
