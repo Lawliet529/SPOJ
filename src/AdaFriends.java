@@ -26,11 +26,11 @@ public class AdaFriends {
     }
     Arrays.sort(values);
 
-    // Compute the sum of the k last values
+    // Compute the sum of the last k values
     long sum = 0;
     k = Math.min(k, values.length);
-    while (k-- > 0) {
-      sum += values[--i];
+    for (int j = values.length - 1; j >= values.length - k; j--) {
+      sum += values[j];
     }
     System.out.println(sum);
   }
