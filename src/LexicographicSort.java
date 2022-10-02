@@ -14,22 +14,24 @@ public class LexicographicSort {
         words[j] = scanner.next();
       }
 
-      Arrays.sort(words, (a, b) -> {
-        int min = Math.min(a.length(), b.length());
-        for (int j = 0; j < min; j++) {
-          if (a.charAt(j) != b.charAt(j)) {
-            for (char c : alphabet) {
-              if (c == a.charAt(j)) {
-                return -1;
-              }
-              if (c == b.charAt(j)) {
-                return 1;
+      Arrays.sort(
+          words,
+          (a, b) -> {
+            int min = Math.min(a.length(), b.length());
+            for (int j = 0; j < min; j++) {
+              if (a.charAt(j) != b.charAt(j)) {
+                for (char c : alphabet) {
+                  if (c == a.charAt(j)) {
+                    return -1;
+                  }
+                  if (c == b.charAt(j)) {
+                    return 1;
+                  }
+                }
               }
             }
-          }
-        }
-        return a.length() - b.length();
-      });
+            return a.length() - b.length();
+          });
 
       for (String word : words) {
         System.out.println(word);
