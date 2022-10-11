@@ -1,0 +1,34 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+public class EasyStack {
+
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    int t = Integer.parseInt(br.readLine());
+    String[] stack = new String[t];
+    int top = -1;
+    for (int i = 0; i < t; i++) {
+      String s = br.readLine();
+      if (s.charAt(0) == '1') {
+        top++;
+        stack[top] = s.substring(2);
+      } else if (s.equals("2")) {
+        if (top >= 0) {
+          top--;
+        }
+      } else if (s.equals("3")) {
+        if (top >= 0) {
+          bw.write(stack[top] + "\n");
+        } else {
+          bw.write("Empty!\n");
+        }
+      }
+    }
+    bw.flush();
+  }
+}
