@@ -10,12 +10,12 @@ public class EasyStack {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     int t = Integer.parseInt(br.readLine());
-    String[] stack = new String[t];
+    int[] stack = new int[t];
     int top = -1;
     for (int i = 0; i < t; i++) {
       String s = br.readLine();
       if (s.charAt(0) == '1') {
-        stack[++top] = s.substring(2);
+        stack[++top] = Integer.parseInt(s.substring(2));
       } else if (s.equals("2")) {
         if (top >= 0) {
           top--;
