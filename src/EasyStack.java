@@ -15,18 +15,13 @@ public class EasyStack {
     for (int i = 0; i < t; i++) {
       String s = br.readLine();
       if (s.charAt(0) == '1') {
-        top++;
-        stack[top] = s.substring(2);
+        stack[++top] = s.substring(2);
       } else if (s.equals("2")) {
         if (top >= 0) {
           top--;
         }
       } else if (s.equals("3")) {
-        if (top >= 0) {
-          bw.write(stack[top] + "\n");
-        } else {
-          bw.write("Empty!\n");
-        }
+        bw.write(top == -1 ? "Empty!\n" : stack[top] + "\n");
       }
     }
     bw.flush();
