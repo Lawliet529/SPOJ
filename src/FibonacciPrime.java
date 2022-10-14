@@ -20,24 +20,12 @@ public class FibonacciPrime {
         fib.add(fib.get(fib.size() - 1) + fib.get(fib.size() - 2));
       }
       isFib = fib.contains(n);
-      if (isFib && isPrime(n)) {
+      if (isFib) {
         bos.write("YES\n".getBytes());
       } else {
         bos.write("NO\n".getBytes());
       }
     }
     bos.flush();
-  }
-
-  private static boolean isPrime(int i) {
-    if (i < 2) {
-      return false;
-    }
-    for (int j = 2; j <= Math.sqrt(i); j++) {
-      if (i % j == 0) {
-        return false;
-      }
-    }
-    return true;
   }
 }
