@@ -10,7 +10,12 @@ public class LargestCube {
     BufferedOutputStream bos = new BufferedOutputStream(System.out);
     int t = Integer.parseInt(br.readLine());
     for (int i = 0; i < t; i ++) {
-      bos.write(((int) Math.cbrt(Integer.parseInt(br.readLine())) + "\n").getBytes());
+      int n = Integer.parseInt(br.readLine());
+      int x = 1;
+      while (x * x * x <= n) {
+        x++;
+      }
+      bos.write((x - 1 + "\n").getBytes());
     }
     bos.flush();
   }
