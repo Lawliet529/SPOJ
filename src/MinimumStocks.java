@@ -10,10 +10,8 @@ public class MinimumStocks {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedOutputStream bos = new BufferedOutputStream(System.out);
     HashMap<String, Integer> stocks = new HashMap<>();
-    int day = 0;
     int n = Integer.parseInt(br.readLine());
     for (int i = 0; i < n; i++) {
-      day++;
       String[] inst = br.readLine().split(" ");
       if ("3".equals(inst[0])) {
         int min = Integer.MAX_VALUE;
@@ -24,7 +22,7 @@ public class MinimumStocks {
             min = stocks.get(stock);
           }
         }
-        bos.write((minStock + " " + day + "\n").getBytes());
+        bos.write((minStock + " " + (i + 1) + "\n").getBytes());
         stocks.remove(minStock);
       } else {
         stocks.put(inst[1], Integer.parseInt(inst[2]));
