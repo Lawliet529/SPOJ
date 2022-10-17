@@ -31,8 +31,7 @@ public class LexicographicSort {
               }
             }
             return a.length() - b.length();
-          }
-      );
+          });
 
       for (String word : words) {
         System.out.println(word);
