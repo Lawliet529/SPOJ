@@ -72,9 +72,9 @@ public class SocialNetworkCommunity {
   }
 
   private static int rootOf(int[] parent, int a) {
-    if (parent[a] == a) {
-      return a;
+    while (parent[a] != parent[parent[a]]) {
+      parent[a] = parent[parent[a]];
     }
-    return parent[a] = rootOf(parent, parent[a]);
+    return parent[a];
   }
 }
