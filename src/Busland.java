@@ -35,7 +35,7 @@ public class Busland {
             break;
           case "3":
             if (query[1].equals("D")) {
-              bos.write((List.copyOf(queue).get(Integer.parseInt(query[2])-1) + "\n").getBytes());
+              bos.write((List.copyOf(queue).get(Integer.parseInt(query[2]) - 1) + "\n").getBytes());
             } else {
               Iterator<Integer> iterator = queue.iterator();
               int index = 0;
