@@ -38,10 +38,10 @@ public class Busland {
               bos.write((List.copyOf(queue).get(Integer.parseInt(query[2]) - 1) + "\n").getBytes());
             } else {
               Iterator<Integer> iterator = queue.iterator();
-              int index = 0;
+              int index = 1;
               while (iterator.hasNext()) {
                 if (iterator.next() == Integer.parseInt(query[2])) {
-                  bos.write((index + 1 + "\n").getBytes());
+                  bos.write((index + "\n").getBytes());
                   break;
                 }
                 index++;
