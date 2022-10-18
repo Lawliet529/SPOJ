@@ -33,14 +33,7 @@ public class SocialNetworkCommunity {
           }
           break;
         case "S":
-          int root = rootOf(parent, Integer.parseInt(query[1]));
-          int count = 0;
-          for (int j = 1; j <= n; j++) {
-            if (root == rootOf(parent, j)) {
-              count++;
-            }
-          }
-          bos.write((count + "\n").getBytes());
+          bos.write((size[rootOf(parent, Integer.parseInt(query[1]))] + "\n").getBytes());
       }
     }
     bos.flush();
