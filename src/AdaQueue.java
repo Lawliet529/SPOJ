@@ -18,7 +18,7 @@ public class AdaQueue {
         case "back":
           if (!queue.isEmpty()) {
             if (isReversed) {
-              bos.write((queue.remove()+ "\n").getBytes());
+              bos.write((queue.remove() + "\n").getBytes());
             } else {
               bos.write((queue.removeLast() + "\n").getBytes());
             }
