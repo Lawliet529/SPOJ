@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Iterator;
-import java.util.List;
 
 public class Busland {
 
@@ -35,7 +34,12 @@ public class Busland {
             break;
           case "3":
             if (query[1].equals("D")) {
-              bos.write((List.copyOf(queue).get(Integer.parseInt(query[2]) - 1) + "\n").getBytes());
+              Iterator<Integer> iterator = queue.iterator();
+              int y = Integer.parseInt(query[2]);
+              for (int k = 1; k < y; k++) {
+                iterator.next();
+              }
+              bos.write((iterator.next() + "\n").getBytes());
             } else {
               Iterator<Integer> iterator = queue.iterator();
               int index = 1;
