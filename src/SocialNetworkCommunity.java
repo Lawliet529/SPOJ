@@ -9,18 +9,20 @@ public class SocialNetworkCommunity {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedOutputStream bos = new BufferedOutputStream(System.out);
     String[] nm = br.readLine().split(" ");
-    int n = Integer.parseInt(nm[0]) + 1;
+    int n = Integer.parseInt(nm[0]);
     int m = Integer.parseInt(nm[1]);
-    int[] parent = new int[n];
-    for (int i = 1; i < n; i++) {
+    int[] parent = new int[n+1];
+    int[] size = new int[n+1];
+    for (int i = 1; i <= n; i++) {
       parent[i] = i;
+      size[i] = 1;
     }
     int q = Integer.parseInt(br.readLine());
     for (int i = 0; i < q; i++) {
       String[] query = br.readLine().split(" ");
       switch (query[0]) {
         case "A":
-          join(parent, Integer.parseInt(query[1]), Integer.parseInt(query[2]), m);
+          join(parent, size, Integer.parseInt(query[1]), Integer.parseInt(query[2]), m);
           break;
         case "E":
           if (rootOf(parent, Integer.parseInt(query[1]))
@@ -33,7 +35,7 @@ public class SocialNetworkCommunity {
         case "S":
           int root = rootOf(parent, Integer.parseInt(query[1]));
           int count = 0;
-          for (int j = 1; j < n; j++) {
+          for (int j = 1; j <= n; j++) {
             if (root == rootOf(parent, j)) {
               count++;
             }
@@ -44,30 +46,18 @@ public class SocialNetworkCommunity {
     bos.flush();
   }
 
-  private static void join(int[] parent, int x, int y, int max) {
+  private static void join(int[] parent, int[] size, int x, int y, int max) {
     int rootX = rootOf(parent, x);
     int rootY = rootOf(parent, y);
-    if (rootX == rootY) {
+    if (rootX == rootY || size[rootX] + size[rootY] > max) {
       return;
     }
-    int countX = 0;
-    int countY = 0;
-    int n = parent.length;
-    for (int i = 1; i < n; i++) {
-      if (rootOf(parent, i) == rootX) {
-        countX++;
-      }
-      if (rootOf(parent, i) == rootY) {
-        countY++;
-      }
-    }
-    if (countX + countY > max) {
-      return;
-    }
-    if (countX >= countY) {
+    if (size[rootX] > size[rootY]) {
       parent[rootY] = rootX;
+      size[rootX] += size[rootY];
     } else {
       parent[rootX] = rootY;
+      size[rootY] += size[rootX];
     }
   }
 
