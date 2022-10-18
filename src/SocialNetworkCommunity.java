@@ -11,8 +11,8 @@ public class SocialNetworkCommunity {
     String[] nm = br.readLine().split(" ");
     int n = Integer.parseInt(nm[0]);
     int m = Integer.parseInt(nm[1]);
-    int[] parent = new int[n+1];
-    int[] size = new int[n+1];
+    int[] parent = new int[n + 1];
+    int[] size = new int[n + 1];
     for (int i = 1; i <= n; i++) {
       parent[i] = i;
       size[i] = 1;
