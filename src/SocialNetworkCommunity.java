@@ -23,7 +23,8 @@ public class SocialNetworkCommunity {
           join(parent, Integer.parseInt(query[1]), Integer.parseInt(query[2]), m);
           break;
         case "E":
-          if (rootOf(parent, Integer.parseInt(query[1])) == rootOf(parent, Integer.parseInt(query[2]))) {
+          if (rootOf(parent, Integer.parseInt(query[1]))
+              == rootOf(parent, Integer.parseInt(query[2]))) {
             bos.write("Yes\n".getBytes());
           } else {
             bos.write("No\n".getBytes());
