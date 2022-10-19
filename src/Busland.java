@@ -37,7 +37,6 @@ public class Busland {
             } else {
               bos.write(((queue.indexOf(Integer.parseInt(query[2])) + 1) + "\n").getBytes());
             }
-            break;
         }
       }
       queue.clear();
