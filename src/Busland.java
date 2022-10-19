@@ -31,12 +31,13 @@ public class Busland {
               queue.removeFirst();
             }
             break;
-          case "3":
+          default:
             if (query[1].equals("D")) {
               bos.write((queue.get(Integer.parseInt(query[2]) - 1) + "\n").getBytes());
             } else {
               bos.write(((queue.indexOf(Integer.parseInt(query[2])) + 1) + "\n").getBytes());
             }
+            break;
         }
       }
       queue.clear();
