@@ -9,10 +9,10 @@ public class Busland {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedOutputStream bos = new BufferedOutputStream(System.out);
-    LinkedList<Integer> queue = new LinkedList<>();
     int t = Integer.parseInt(br.readLine());
-    for (int i = 0; i < t; i++) {
-      bos.write(("Case " + (i + 1) + ":\n").getBytes());
+    for (int i = 1; i <= t; i++) {
+      bos.write(("Case " + i + ":\n").getBytes());
+      LinkedList<Integer> queue = new LinkedList<>();
       int n = Integer.parseInt(br.readLine());
       for (int j = 0; j < n; j++) {
         String[] query = br.readLine().split(" ");
@@ -39,7 +39,6 @@ public class Busland {
             }
         }
       }
-      queue.clear();
     }
     bos.flush();
   }
