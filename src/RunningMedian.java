@@ -1,3 +1,4 @@
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,47 +8,35 @@ public class RunningMedian {
 
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    BufferedOutputStream bos = new BufferedOutputStream(System.out);
     int t = Integer.parseInt(br.readLine());
     for (int i = 0; i < t; i++) {
       ArrayList<Integer> list = new ArrayList<>();
-      int n;
       while (true) {
-        n = Integer.parseInt(br.readLine());
+        int n = Integer.parseInt(br.readLine());
         if (n == 0) {
           break;
         }
-        if (n == -1) {
-          if (list.size() != 0) {
-            int start = 0;
-            int end = list.size() - 1;
-            int k = list.size() / 2 - (list.size() % 2 == 0 ? 1 : 0);
-            while (true) {
-              int pivot = list.get(end);
-              int j = start;
-              for (int l = start; l < end; l++) {
-                if (list.get(l) < pivot) {
-                  int temp = list.get(l);
-                  list.set(l, list.get(j));
-                  list.set(j, temp);
-                  j++;
-                }
-              }
-              list.set(end, list.get(j));
-              list.set(j, pivot);
-              if (j == k) {
-                System.out.println(list.remove(j));
-                break;
-              } else if (j < k) {
-                start = j + 1;
-              } else {
-                end = j - 1;
-              }
+        if (n != -1) {
+          if (list.isEmpty()) {
+            list.add(n);
+          } else {
+            int j = 0;
+            while (j < list.size() && list.get(j) < n) {
+              j++;
             }
+            list.add(j, n);
           }
-          continue;
+        } else {
+          if (list.size() % 2 == 0) {
+            bos.write(String.valueOf(list.remove(list.size() / 2 - 1)).getBytes());
+          } else {
+            bos.write(String.valueOf(list.remove(list.size() / 2)).getBytes());
+          }
+          bos.write('\n');
         }
-        list.add(n);
       }
     }
+    bos.flush();
   }
 }
