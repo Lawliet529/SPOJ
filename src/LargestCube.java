@@ -9,7 +9,11 @@ public class LargestCube {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedOutputStream bos = new BufferedOutputStream(System.out);
     int t = Integer.parseInt(br.readLine());
-    int[] cubes = new int[] {1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859, 8000, 9261};
+    int[] cubes =
+        new int[] {
+          1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913,
+          5832, 6859, 8000, 9261
+        };
     for (int i = 0; i < t; i++) {
       int n = Integer.parseInt(br.readLine());
       int j = 0;
