@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class BuildingBridges {
+
   private static final InputStream is = System.in;
   private static final byte[] inBuf = new byte[1024];
   private static int lenBuf = 0;
@@ -62,7 +63,9 @@ public class BuildingBridges {
   }
 
   public static int readByte() {
-    if (lenBuf == -1) throw new InputMismatchException();
+    if (lenBuf == -1) {
+      throw new InputMismatchException();
+    }
 
     if (ptrBuf >= lenBuf) {
       ptrBuf = 0;
@@ -73,7 +76,9 @@ public class BuildingBridges {
       }
     }
 
-    if (lenBuf <= 0) return -1;
+    if (lenBuf <= 0) {
+      return -1;
+    }
 
     return inBuf[ptrBuf++];
   }
@@ -83,19 +88,20 @@ public class BuildingBridges {
     int b;
 
     boolean minus = false;
-    while ((b = readByte()) != -1 &&
-        !((b >= '0' && b <= '9') || b == '-')
-    );
+    do {
+      b = readByte();
+    } while (b != -1 && !('0' <= b && b <= '9') && b != '-');
     if (b == '-') {
       minus = true;
       b = readByte();
     }
 
     while (true) {
-      if (b >= '0' && b <= '9')
+      if (b >= '0' && b <= '9') {
         num = (num << 3) + (num << 1) + (b - '0');
-      else
+      } else {
         return minus ? -num : num;
+      }
       b = readByte();
     }
   }
