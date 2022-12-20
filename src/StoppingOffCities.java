@@ -181,7 +181,9 @@ public class StoppingOffCities {
     int b;
 
     boolean minus = false;
-    while ((b = readByte()) != -1 && !((b >= '0' && b <= '9') || b == '-'));
+    do {
+      b = readByte();
+    } while (b != -1 && !(('0' <= b && b <= '9') || b == '-'));
     if (b == '-') {
       minus = true;
       b = readByte();
@@ -192,25 +194,5 @@ public class StoppingOffCities {
       else return minus ? -num : num;
       b = readByte();
     }
-  }
-
-  public static String next() {
-    int b = skip();
-    StringBuilder sb = new StringBuilder();
-    while (!isSpaceChar(b)) {
-      sb.appendCodePoint(b);
-      b = readByte();
-    }
-    return sb.toString();
-  }
-
-  public static boolean isSpaceChar(int c) {
-    return !(c >= 33 && c <= 126);
-  }
-
-  public static int skip() {
-    int b;
-    while ((b = readByte()) != -1 && isSpaceChar(b));
-    return b;
   }
 }
