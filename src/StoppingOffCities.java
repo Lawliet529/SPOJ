@@ -41,7 +41,7 @@ public class StoppingOffCities {
     int child = 0;
     for (int[] a : graph[u]) {
       int v = a[0];
-      int[] edge = new int[]{u, v};
+      int[] edge = new int[] {u, v};
       if (!visited[v]) {
         child++;
         parent[v] = u;
@@ -86,8 +86,8 @@ public class StoppingOffCities {
       if (v1 == -1) {
         break;
       }
-      graph[v1].add(new int[]{v2, 1});
-      graph[v2].add(new int[]{v1, 1});
+      graph[v1].add(new int[] {v2, 1});
+      graph[v2].add(new int[] {v1, 1});
     }
     int s = nextInt();
     int d = nextInt();
@@ -131,7 +131,7 @@ public class StoppingOffCities {
     Queue<Integer[]> pq = new PriorityQueue<>(Comparator.comparing(o -> o[1]));
     Arrays.fill(d, Integer.MAX_VALUE);
     d[s] = 0;
-    pq.add(new Integer[]{s, 0});
+    pq.add(new Integer[] {s, 0});
     path[s] = -1;
     while (!pq.isEmpty()) {
       int u = pq.peek()[0];
@@ -146,14 +146,14 @@ public class StoppingOffCities {
         int dv = graph[u].get(i)[1];
         if (d[v] > d[u] + dv) {
           d[v] = d[u] + dv;
-          pq.add(new Integer[]{v, d[v]});
+          pq.add(new Integer[] {v, d[v]});
           path[v] = u;
         }
       }
     }
   }
 
-  //-------------Reader---------------------
+  // -------------Reader---------------------
   private static final InputStream INPUT_STREAM = System.in;
   private static final byte[] inBuf = new byte[1024];
   private static int lenBuf = 0;
